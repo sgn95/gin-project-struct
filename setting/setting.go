@@ -36,3 +36,8 @@ func ToInt(confStr string) (int, error) {
 	confInt, err := strconv.Atoi(AppSetting[confStr])
 	return confInt, err
 }
+
+// ToString 读取配置文件 转成string类型
+func ToString(confStr string) string {
+	return AppSetting[confStr]
+}

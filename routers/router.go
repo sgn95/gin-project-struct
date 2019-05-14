@@ -1,19 +1,15 @@
 package routers
 
 import (
-	"demo/utils"
-	"os"
+	"demo/pkg/logs"
 
 	"github.com/gin-gonic/gin"
 )
 
 // InitRouter 初始化路由
 func InitRouter() *gin.Engine {
-	r := gin.Default()
-	// 创建文件 设置输出日志文件路径
-	if os.Getenv("runmode") == "prod" {
-		utils.LogFileRecord()
-	}
-	r.Use(gin.Logger())
+	r := gin.New()
+	r.Use(logs.Logger())
+	r.Use(gin.Recovery())
 	return r
 }
